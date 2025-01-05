@@ -17,43 +17,43 @@ Welcome to my Nutanix lab documentation. This project showcases the implementati
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 20px; text-align: center; margin: 20px 0;">
     <div>
-        <img src="/assets/logos/nutanix.png" alt="Nutanix" style="width: 64px; height: 64px;">
+        <img src="assets/logos/nutanix.png" alt="Nutanix" style="width: 64px; height: 64px;">
         <p>Nutanix</p>
     </div>
     <div>
-        <img src="/assets/logos/ansible.png" alt="Ansible" style="width: 64px; height: 64px;">
+        <img src="assets/logos/ansible.png" alt="Ansible" style="width: 64px; height: 64px;">
         <p>Ansible</p>
     </div>
     <div>
-        <img src="/assets/logos/terraform.png" alt="Terraform" style="width: 64px; height: 64px;">
+        <img src="assets/logos/terraform.png" alt="Terraform" style="width: 64px; height: 64px;">
         <p>Terraform</p>
     </div>
     <div>
-        <img src="/assets/logos/proxmox.png" alt="Proxmox" style="width: 64px; height: 64px;">
+        <img src="assets/logos/proxmox.png" alt="Proxmox" style="width: 64px; height: 64px;">
         <p>Proxmox</p>
     </div>
     <div>
-        <img src="/assets/logos/grafana.png" alt="Grafana" style="width: 64px; height: 64px;">
+        <img src="assets/logos/grafana.png" alt="Grafana" style="width: 64px; height: 64px;">
         <p>Grafana</p>
     </div>
     <div>
-        <img src="/assets/logos/zabbix.png" alt="Zabbix" style="width: 64px; height: 64px;">
+        <img src="assets/logos/zabbix.png" alt="Zabbix" style="width: 64px; height: 64px;">
         <p>Zabbix</p>
     </div>
     <div>
-        <img src="/assets/logos/git.png" alt="Git" style="width: 64px; height: 64px;">
+        <img src="assets/logos/git.png" alt="Git" style="width: 64px; height: 64px;">
         <p>Git</p>
     </div>
     <div>
-        <img src="/assets/logos/linux.png" alt="Linux" style="width: 64px; height: 64px;">
+        <img src="assets/logos/linux.png" alt="Linux" style="width: 64px; height: 64px;">
         <p>Linux</p>
     </div>
     <div>
-        <img src="/assets/logos/debian.png" alt="Debian" style="width: 64px; height: 64px;">
+        <img src="assets/logos/debian.png" alt="Debian" style="width: 64px; height: 64px;">
         <p>Debian</p>
     </div>
     <div>
-        <img src="/assets/logos/ubuntu.png" alt="Ubuntu" style="width: 64px; height: 64px;">
+        <img src="assets/logos/ubuntu.png" alt="Ubuntu" style="width: 64px; height: 64px;">
         <p>Ubuntu</p>
     </div>
 </div>
