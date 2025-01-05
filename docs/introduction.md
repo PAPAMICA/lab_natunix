@@ -28,4 +28,18 @@ Nutanix was founded with a mission to revolutionize traditional data center arch
 - **Ease of Use**: The intuitive Prism interface simplifies infrastructure management
 - **Resilience and Scalability**: Nutanix Distributed Storage Fabric (DSF) ensures high availability
 - **Integrated Hypervisor**: The Nutanix Acropolis Hypervisor (AHV) is built-in
-- **Multi-Cloud Support**: Bridges the gap between on-premises and cloud infrastructure 
+- **Multi-Cloud Support**: Bridges the gap between on-premises and cloud infrastructure
+
+
+## Video presentation
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px;">
+  <iframe
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+    src="https://www.youtube.com/embed/W4vFytnQBbs"
+    title="Nutanix Presentation"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+
