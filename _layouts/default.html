@@ -699,33 +699,45 @@
         return;
       }
 
-      const googleTranslateUrl = `https://translate.googleapis.com/translate_a/element.js?cb=googleTranslateElementInit`;
-
-      if (!window.google || !window.google.translate) {
-        const script = document.createElement('script');
-        script.src = googleTranslateUrl;
-        script.async = true;
-        document.body.appendChild(script);
+      // Supprime l'ancien élément de traduction s'il existe
+      const existingGoogleTranslate = document.getElementById('google_translate_element');
+      if (existingGoogleTranslate) {
+        existingGoogleTranslate.remove();
       }
 
+      // Crée un nouvel élément pour Google Translate
+      const translateElement = document.createElement('div');
+      translateElement.id = 'google_translate_element';
+      translateElement.style.display = 'none';
+      document.body.appendChild(translateElement);
+
+      // Charge le script Google Translate
+      const script = document.createElement('script');
+      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      script.async = true;
+      document.body.appendChild(script);
+
+      // Configure Google Translate
       window.googleTranslateElementInit = function() {
         new google.translate.TranslateElement({
           pageLanguage: 'en',
           includedLanguages: lang,
-          autoDisplay: false
-        });
+          autoDisplay: false,
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
 
-        // Trigger translation
-        const iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
-        if (iframe) {
-          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-          const translateButton = iframeDoc.getElementsByTagName('button')[0];
-          translateButton.click();
-        }
+        // Force la traduction après le chargement
+        setTimeout(() => {
+          const select = document.querySelector('.goog-te-combo');
+          if (select) {
+            select.value = lang;
+            select.dispatchEvent(new Event('change'));
+          }
+        }, 1000);
       };
     }
 
-    // Restore selected language on page load
+    // Restaure la langue sélectionnée au chargement de la page
     document.addEventListener('DOMContentLoaded', function() {
       const savedLang = localStorage.getItem('selectedLanguage');
       if (savedLang && savedLang !== 'en') {
@@ -734,7 +746,7 @@
       }
     });
 
-    // Save selected language
+    // Sauvegarde la langue sélectionnée
     document.getElementById('languageSelect').addEventListener('change', function(e) {
       localStorage.setItem('selectedLanguage', e.target.value);
     });
