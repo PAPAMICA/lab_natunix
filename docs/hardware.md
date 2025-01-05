@@ -1,5 +1,5 @@
 ---
-title: Hardware Setup
+title: 🔧Hardware Setup
 order: 2
 ---
 

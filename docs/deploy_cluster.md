@@ -1,5 +1,5 @@
 ---
-title: Nutanix installation
+title: 🔥 Nutanix installation
 order: 4
 ---
 

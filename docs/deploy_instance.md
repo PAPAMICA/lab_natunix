@@ -1,5 +1,5 @@
 ---
-title: Create instance
+title: ✨ Create instance
 order: 5
 ---
 
