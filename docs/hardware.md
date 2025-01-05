@@ -49,7 +49,7 @@ After thorough research, I chose the [ACEMAGICIAN AM06PRO Mini PC](https://amzn.
 
 ## Custom Enclosure: Design and 3D Printing
 
-<img src="assets/images/print.gif" alt="Print annimation" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+<img src="../assets/images/print.gif" alt="Print annimation" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
 To keep the setup compact and visually appealing, I designed a custom 3-node cluster enclosure using Fusion 360 and printed it with a 3D printer. Here’s the process:
 
@@ -81,6 +81,6 @@ This enclosure not only organizes the hardware but also creates a professional a
 4. Node identification system
 5. Professional appearance
 
-<img src="assets/images/print_result1.png" alt="Print result 1" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+<img src="../assets/images/print_result1.png" alt="Print result 1" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
-<img src="assets/images/print_result2.png" alt="Print result 2" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+<img src="../assets/images/print_result2.png" alt="Print result 2" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
