@@ -58,25 +58,31 @@ Welcome to my Nutanix lab documentation. This project showcases the implementati
     </div>
 </div>
 
-## Somes pictures of this project
+## Some pictures of this project
 <div class="carousel" style="max-width: 800px; margin: 0 auto; position: relative;">
-    <div class="carousel-container" style="display: flex; overflow: hidden; position: relative;">
+    <div class="carousel-container" style="display: flex; transition: transform 0.5s ease-in-out; width: 100%;">
         <div class="carousel-slide" style="flex: 0 0 100%; min-width: 100%;">
-            <img src="assets/images/clustback.jpg" alt="Cluster Back View" style="width: 100%; height: auto; border-radius: 8px;">
+            <img src="assets/images/clustback.jpg" alt="Cluster Back View" style="width: 100%; height: auto; object-fit: cover; border-radius: 8px;">
             <p style="text-align: center; margin-top: 10px;">Cluster Back View</p>
         </div>
         <div class="carousel-slide" style="flex: 0 0 100%; min-width: 100%;">
-            <img src="assets/images/pc.jpg" alt="Servers" style="width: 100%; height: auto; border-radius: 8px;">
+            <img src="assets/images/pc.jpg" alt="Servers" style="width: 100%; height: auto; object-fit: cover; border-radius: 8px;">
             <p style="text-align: center; margin-top: 10px;">Servers</p>
         </div>
         <div class="carousel-slide" style="flex: 0 0 100%; min-width: 100%;">
-            <img src="assets/images/print.gif" alt="Prism Dashboard" style="width: 100%; height: auto; border-radius: 8px;">
+            <img src="assets/images/print.gif" alt="Prism Dashboard" style="width: 100%; height: auto; object-fit: cover; border-radius: 8px;">
             <p style="text-align: center; margin-top: 10px;">3D Print</p>
         </div>
     </div>
 
-    <button class="carousel-btn prev" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer; border-radius: 50%;">❮</button>
-    <button class="carousel-btn next" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer; border-radius: 50%;">❯</button>
+    <button class="carousel-btn prev" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 50%; z-index: 10; font-size: 18px;">❮</button>
+    <button class="carousel-btn next" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px 15px; cursor: pointer; border-radius: 50%; z-index: 10; font-size: 18px;">❯</button>
+
+    <div class="carousel-dots" style="text-align: center; margin-top: 10px;">
+        <span class="dot active" style="height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; cursor: pointer;"></span>
+        <span class="dot" style="height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; cursor: pointer;"></span>
+        <span class="dot" style="height: 10px; width: 10px; margin: 0 5px; background-color: #bbb; border-radius: 50%; display: inline-block; cursor: pointer;"></span>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -84,13 +90,24 @@ Welcome to my Nutanix lab documentation. This project showcases the implementati
             const slides = document.querySelectorAll('.carousel-slide');
             const prevBtn = document.querySelector('.prev');
             const nextBtn = document.querySelector('.next');
-
+            const dots = document.querySelectorAll('.dot');
+            
             let currentSlide = 0;
+            let touchStartX = 0;
+            let touchEndX = 0;
             const slideCount = slides.length;
+            let autoplayInterval;
 
             function showSlide(index) {
+                currentSlide = index;
                 container.style.transform = `translateX(-${index * 100}%)`;
-                container.style.transition = 'transform 0.5s ease-in-out';
+                updateDots();
+            }
+
+            function updateDots() {
+                dots.forEach((dot, index) => {
+                    dot.style.backgroundColor = index === currentSlide ? '#717171' : '#bbb';
+                });
             }
 
             function nextSlide() {
@@ -103,12 +120,69 @@ Welcome to my Nutanix lab documentation. This project showcases the implementati
                 showSlide(currentSlide);
             }
 
-            // Auto advance every 3 seconds
-            setInterval(nextSlide, 3000);
+            function startAutoplay() {
+                stopAutoplay();
+                autoplayInterval = setInterval(nextSlide, 5000);
+            }
+
+            function stopAutoplay() {
+                if (autoplayInterval) {
+                    clearInterval(autoplayInterval);
+                }
+            }
+
+            // Touch events for mobile
+            container.addEventListener('touchstart', (e) => {
+                touchStartX = e.touches[0].clientX;
+                stopAutoplay();
+            });
+
+            container.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+            });
+
+            container.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].clientX;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > 50) { // Minimum swipe distance
+                    if (diff > 0) {
+                        nextSlide();
+                    } else {
+                        prevSlide();
+                    }
+                }
+                startAutoplay();
+            });
 
             // Button controls
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
+                stopAutoplay();
+                startAutoplay();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopAutoplay();
+                startAutoplay();
+            });
+
+            // Dot controls
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showSlide(index);
+                    stopAutoplay();
+                    startAutoplay();
+                });
+            });
+
+            // Start autoplay on load
+            startAutoplay();
+
+            // Pause autoplay when user hovers over carousel
+            container.addEventListener('mouseenter', stopAutoplay);
+            container.addEventListener('mouseleave', startAutoplay);
         });
     </script>
 </div>
