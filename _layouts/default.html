@@ -135,6 +135,24 @@
         background: #44475a;
         padding: 2rem;
         border-radius: 8px;
+        animation: fadeIn 0.5s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-out {
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.3s, transform 0.3s;
       }
 
       .footer {
@@ -536,6 +554,26 @@
               setTimeout(toggleMenu, 100);
             }
           });
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Gestion des liens pour l'animation de transition
+        document.querySelectorAll('a').forEach(link => {
+          // Ignore les liens externes et les ancres
+          if (link.hostname === window.location.hostname && !link.hash && !link.hasAttribute('target')) {
+            link.addEventListener('click', function(e) {
+              e.preventDefault();
+              const mainContent = document.querySelector('.main-content');
+              mainContent.classList.add('fade-out');
+              
+              setTimeout(() => {
+                window.location.href = this.href;
+              }, 300);
+            });
+          }
         });
       });
     </script>
