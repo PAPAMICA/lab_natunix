@@ -52,4 +52,4 @@ After thorough research, I chose the ACEMAGICIAN AM06PRO Mini PC for each node.
 2. Integrated ventilation system
 3. Cable management solutions
 4. Node identification system
-5. Professional appearance 
+5. Professional appearance

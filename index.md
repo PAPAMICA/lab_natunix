@@ -4,7 +4,7 @@ order: 0
 ---
 
 # Nutanix Lab Documentation
-
+![Nutanix Lab](assets/images/banner.png)
 ## Overview
 Welcome to my Nutanix lab documentation. This project showcases the implementation of a three-node Nutanix cluster, designed for learning and certification preparation. Built with ACEMAGICIAN AM06PRO Mini PCs, this setup demonstrates how to create a cost-effective, energy-efficient hyperconverged infrastructure environment.
 
@@ -58,10 +58,23 @@ Welcome to my Nutanix lab documentation. This project showcases the implementati
     </div>
 </div>
 
-## Table of Contents
-1. [Infrastructure Setup](docs/infrastructure.md)
-2. [Network Configuration](docs/network.md)
-3. [Storage Configuration](docs/storage.md)
-4. [Virtual Machines](docs/virtual-machines.md)
-5. [Backup & DR](docs/backup-dr.md)
-6. [Monitoring](docs/monitoring.md) 
+## Somes pictures of this project
+<div class="carousel" style="max-width: 800px; margin: 0 auto;">
+    <div style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 20px 0;">
+        <div style="flex: 0 0 100%; scroll-snap-align: start;">
+            <img src="assets/images/clustback.jpg" alt="Cluster Back View" style="width: 100%; height: auto; border-radius: 8px;">
+            <p style="text-align: center; margin-top: 10px;">Cluster Back View</p>
+        </div>
+        <div style="flex: 0 0 100%; scroll-snap-align: start;">
+            <img src="assets/images/pc.jpg" alt="Servers" style="width: 100%; height: auto; border-radius: 8px;">
+            <p style="text-align: center; margin-top: 10px;">Servers</p>
+        </div>
+        <div style="flex: 0 0 100%; scroll-snap-align: start;">
+            <img src="assets/images/print.gif" alt="Prism Dashboard" style="width: 100%; height: auto; border-radius: 8px;">
+            <p style="text-align: center; margin-top: 10px;">3D Print</p>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 10px;">
+        <p style="font-style: italic; color: #666;">Scroll horizontally to view more images</p>
+    </div>
+</div>
