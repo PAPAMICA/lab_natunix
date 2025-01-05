@@ -1,0 +1,4 @@
+title: Nutanix Lab Documentation
+description: Documentation for Nutanix lab environment
+remote_theme: "dracula/gh-pages"
+show_downloads: false 
