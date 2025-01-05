@@ -20,7 +20,7 @@ For this lab, I opted for a three-node Nutanix cluster to explore advanced featu
 ## Hardware Selection
 After thorough research, I chose the [ACEMAGICIAN AM06PRO Mini PC](https://amzn.to/3W6YD5n) for each node.
 
-<img src="../assets/images/pc.png" alt="ACEMAGICIAN AM06PRO Mini PC" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+<img src="../assets/images/pc.jpg" alt="ACEMAGICIAN AM06PRO Mini PC" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
 ### Key Features
 - **Processor**: AMD Ryzen 7 5700U (8 cores, 16 threads, up to 4.4 GHz)
