@@ -1,5 +1,5 @@
 ---
-title: 📊 Monitoring
+title: 📊  Monitoring
 order: 6
 ---
 

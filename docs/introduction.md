@@ -1,5 +1,5 @@
 ---
-title: 👋🏻 Introduction
+title: 👋🏻  Introduction
 order: 1
 ---
 
