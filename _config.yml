@@ -1,4 +1,8 @@
-title: Nutanix Lab Documentation
-description: Documentation for Nutanix lab environment
+title: Nutanix Lab
+description: Documentation by Mickael Asseline
 remote_theme: "dracula/gh-pages"
-show_downloads: false 
+show_downloads: false
+
+# Ajout des styles personnalisés
+sass:
+  style: compressed

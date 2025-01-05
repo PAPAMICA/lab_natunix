@@ -1,0 +1,35 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.page-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.post-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.site-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// Pour s'assurer que le contenu est bien lisible
+.post-content p {
+  max-width: 1200px;
+  line-height: 1.6;
+}
+
+// Ajustement pour les grands écrans
+@media screen and (min-width: 1400px) {
+  .page-content,
+  .post-content,
+  .site-nav {
+    max-width: 1400px;
+  }
+}
