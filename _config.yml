@@ -2,6 +2,7 @@ title: Nutanix Lab
 description: Documentation by Mickael Asseline
 remote_theme: "dracula/gh-pages"
 show_downloads: true
+show_header: true
 
 sass:
   style: compressed
