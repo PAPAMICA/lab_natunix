@@ -1,6 +1,6 @@
 ---
 ---
-@import "dracula/gh-pages";
+@import "{{ site.remote_theme }}";
 
 // Styles personnalisés
 $max-width-default: 1200px;
