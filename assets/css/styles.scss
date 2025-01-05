@@ -3,8 +3,6 @@
 
 @import "jekyll-theme-dracula";
 
-body .wrapper section {
-  max-width: 1200px !important;
-  width: 100% !important;
-  margin: 0 auto !important;
-}
+.inner {
+    max-width: 100%;
+  }
