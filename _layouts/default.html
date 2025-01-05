@@ -452,6 +452,34 @@
           transform: rotate(-45deg) translate(7px, -7px);
         }
       }
+
+      .translation-widget {
+        position: fixed;
+        top: 20px;
+        right: 80px;
+        z-index: 1002;
+        background: #44475a;
+        padding: 5px 10px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .translation-widget select {
+        background: #282a36;
+        color: #f8f8f2;
+        border: 1px solid #6272a4;
+        padding: 5px;
+        border-radius: 4px;
+      }
+
+      @media screen and (max-width: 768px) {
+        .translation-widget {
+          top: 10px;
+          right: 60px;
+        }
+      }
     </style>
   </head>
 
@@ -470,6 +498,21 @@
         </div>
       </div>
     </header>
+
+    <div class="translation-widget">
+      <select id="languageSelect" onchange="changeLanguage(this.value)">
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="es">Español</option>
+        <option value="de">Deutsch</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="ru">Русский</option>
+        <option value="zh">中文</option>
+        <option value="ja">日本語</option>
+        <option value="ko">한국어</option>
+      </select>
+    </div>
 
     <div class="main-container">
       <div class="sidebar">
@@ -639,7 +682,7 @@
               e.preventDefault();
               const mainContent = document.querySelector('.main-content');
               mainContent.classList.add('fade-out');
-              
+
               setTimeout(() => {
                 window.location.href = this.href;
               }, 300);
@@ -647,6 +690,54 @@
           }
         });
       });
+    </script>
+
+    <script>
+    function changeLanguage(lang) {
+      if (lang === 'en') {
+        location.reload();
+        return;
+      }
+
+      const googleTranslateUrl = `https://translate.googleapis.com/translate_a/element.js?cb=googleTranslateElementInit`;
+
+      if (!window.google || !window.google.translate) {
+        const script = document.createElement('script');
+        script.src = googleTranslateUrl;
+        script.async = true;
+        document.body.appendChild(script);
+      }
+
+      window.googleTranslateElementInit = function() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: lang,
+          autoDisplay: false
+        });
+
+        // Trigger translation
+        const iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+        if (iframe) {
+          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+          const translateButton = iframeDoc.getElementsByTagName('button')[0];
+          translateButton.click();
+        }
+      };
+    }
+
+    // Restore selected language on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      const savedLang = localStorage.getItem('selectedLanguage');
+      if (savedLang && savedLang !== 'en') {
+        document.getElementById('languageSelect').value = savedLang;
+        changeLanguage(savedLang);
+      }
+    });
+
+    // Save selected language
+    document.getElementById('languageSelect').addEventListener('change', function(e) {
+      localStorage.setItem('selectedLanguage', e.target.value);
+    });
     </script>
   </body>
 </html>
