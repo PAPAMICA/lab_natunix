@@ -18,13 +18,15 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
       body {
-        margin: 0;
+        margin: 0 auto;
         padding: 0;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
         background-color: #282a36;
         color: #f8f8f2;
+        align-items: center;
+        justify-content: center;
       }
 
       .header {
@@ -38,9 +40,21 @@
         max-width: 1400px;
         margin: 0 auto;
         padding: 0 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        text-align: center;
+      }
+
+      .header-center {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .header-center h1 {
+        margin-bottom: 0.5rem;
+      }
+
+      .header-center p {
+        margin: 0;
+        opacity: 0.8;
       }
 
       .header-left {
@@ -67,7 +81,7 @@
 
       .main-container {
         flex: 1;
-        max-width: 2000px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 0 2rem;
         display: grid;
@@ -132,11 +146,12 @@
       }
 
       .footer-content {
-        max-width: 1400px;
+        max-width: 1200px;
         margin: 0 auto;
         padding: 0 2rem;
         display: flex;
         justify-content: space-between;
+        align-items: center;
       }
 
       .footer-content a {
@@ -177,6 +192,15 @@
         position: relative;
         z-index: 1;
       }
+
+      .view-counter {
+        text-align: center;
+      }
+
+      .view-counter img {
+        margin: 0;
+        padding: 0;
+      }
     </style>
   </head>
 
@@ -184,15 +208,10 @@
     <div id="particles-js"></div>
     <header class="header">
       <div class="header-content">
-        <div class="header-left">
+        <div class="header-center">
           <h1>{{ site.title | default: site.github.repository_name }}</h1>
           <p>{{ site.description | default: site.github.project_tagline }}</p>
         </div>
-        <nav class="header-nav">
-          <a href="{{ '/' | relative_url }}" class="nav-link">Home</a>
-          <a href="{{ '/docs' | relative_url }}" class="nav-link">Documentation</a>
-          <a href="{{ site.github.repository_url }}" class="nav-link">GitHub</a>
-        </nav>
       </div>
     </header>
 
@@ -250,6 +269,9 @@
     <footer class="footer">
       <div class="footer-content">
         <span class="credits left">Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
+        <div class="view-counter">
+          <img src="https://visitor-badge.laobi.icu/badge?page_id={{ site.github.repository_name }}" alt="Visitor Count" />
+        </div>
         <span class="credits right">Theme by <a href="https://draculatheme.com/">Dracula</a></span>
       </div>
     </footer>
