@@ -22,18 +22,22 @@ After some research, I found the [HUNSN Micro Firewall Appliance](https://amzn.t
 
 ### Proxmox
 
+<img src="../assets/images/proxmox_banner.png" alt="Proxmox" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 8px;">
+
 I chose to install Proxmox to virtualize OPNSense, making it easy to backup and upgrade. This will also allow me to set up an instance with a complete monitoring solution to monitor all equipment and systems.
 
 !!photo proxmox
 
 ### OPNsense
 
+!!photo opensense banner
+
 For the installation of OPNSense, it is necessary to prepare the parameters of the instance with :
 - ISO image
 - 2 network cards
 - 100 GB of storage
 
-Once the instance created and OPNsense installed, it is necessary to configure the LAN and WAN interfaces : 
+Once the instance created and OPNsense installed, it is necessary to configure the LAN and WAN interfaces :
 
 !!photo OPNsense terminal
 
@@ -47,6 +51,8 @@ The configuration of the routes and the firewall :
 
 ### VPN
 
+!!photo wireguard banner + logo wireguard dans techno
+
 In order to access the infrastructure from outside, it is necessary to configure a VPN. I set up a Wireguard VPN :
 
 !!photo OPNsense VPN
@@ -57,7 +63,7 @@ This cluster needs to be autonomous and portable, so I configured the WAN addres
 
 The solution is to have the cluster automatically send us the IP and connection information at startup. This can be accomplished with a simple bash script:
 
-!!script bash
+!!script bash + logo bash dans techno
 
 !!service
 

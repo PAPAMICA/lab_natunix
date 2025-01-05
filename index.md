@@ -75,7 +75,7 @@ Welcome to my Nutanix lab documentation. This project showcases the implementati
             <div class="caption">3D Print</div>
         </div>
     </div>
-    
+
     <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
     <button class="next" onclick="moveSlide(1)">&#10095;</button>
 </div>
@@ -154,14 +154,14 @@ function moveSlide(n) {
 
 function showSlides(n) {
     let slides = document.getElementsByClassName("slide");
-    
+
     if (n >= slides.length) {slideIndex = 0}
     if (n < 0) {slideIndex = slides.length - 1}
-    
+
     for (let i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
-    
+
     slides[slideIndex].style.display = "block";
 }
 
