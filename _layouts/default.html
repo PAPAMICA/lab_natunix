@@ -287,11 +287,91 @@
           padding: 0.4rem;
         }
       }
+
+      .hamburger-menu {
+        display: none;
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        z-index: 1000;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.5rem;
+      }
+
+      .hamburger-menu span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: #f8f8f2;
+        margin: 5px 0;
+        transition: all 0.3s ease;
+      }
+
+      @media screen and (max-width: 768px) {
+        .hamburger-menu {
+          display: block;
+        }
+
+        .main-container {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: fixed;
+          left: -100%;
+          top: 0;
+          height: 100vh;
+          width: 80%;
+          max-width: 300px;
+          transition: left 0.3s ease;
+          z-index: 999;
+          overflow-y: auto;
+        }
+
+        .sidebar.active {
+          left: 0;
+        }
+
+        .overlay {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 998;
+        }
+
+        .overlay.active {
+          display: block;
+        }
+
+        .hamburger-menu.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -7px);
+        }
+      }
     </style>
   </head>
 
   <body class="{{ page.colorspace }}">
     <div id="particles-js"></div>
+    <button class="hamburger-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="overlay"></div>
     <header class="header">
       <div class="header-content">
         <div class="header-center">
@@ -356,7 +436,7 @@
       <div class="footer-content">
         <span class="credits left">Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
         <div class="view-counter">
-          <img src="https://visitor-badge.laobi.icu/badge?page_id={{ site.github.repository_name }}&left_color=282a36&right_color=ff79c6" alt="Visitor Count" />
+          <img src="https://visitor-badge.laobi.icu/badge?page_id={{ site.github.repository_name }}&left_color=#282a36&right_color=#ff79c6" alt="Visitor Count" />
         </div>
         <span class="credits right">Theme by <a href="https://draculatheme.com/">Dracula</a></span>
       </div>
@@ -429,6 +509,34 @@
           }
         },
         "retina_detect": true
+      });
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.querySelector('.hamburger-menu');
+        const sidebar = document.querySelector('.sidebar');
+        const overlay = document.querySelector('.overlay');
+
+        function toggleMenu() {
+          hamburger.classList.toggle('active');
+          sidebar.classList.toggle('active');
+          overlay.classList.toggle('active');
+          document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+        overlay.addEventListener('click', toggleMenu);
+
+        // Fermer le menu si on clique sur un lien
+        const sidebarLinks = document.querySelectorAll('.sidebar a');
+        sidebarLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (sidebar.classList.contains('active')) {
+              toggleMenu();
+            }
+          });
+        });
       });
     </script>
   </body>
