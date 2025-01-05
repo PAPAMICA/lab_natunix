@@ -22,88 +22,118 @@
         min-height: 100vh;
         display: flex;
         flex-direction: column;
-      }
-      .header {
-        width: 100%;
-        background: #282a36;
-        padding: 1rem 0;
+        background-color: #282a36;
         color: #f8f8f2;
       }
+
+      .header {
+        width: 100%;
+        background: #44475a;
+        padding: 2rem 0;
+        margin-bottom: 2rem;
+      }
+
       .header-content {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
         padding: 0 2rem;
       }
+
       .main-container {
         flex: 1;
-        display: flex;
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 2rem;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 30% 70%;
         gap: 2rem;
       }
+
       .sidebar {
-        width: 250px;
-        flex-shrink: 0;
-        background: #282a36;
-        padding: 1.5rem;
+        background: #44475a;
+        padding: 2rem;
         border-radius: 8px;
         height: fit-content;
       }
+
       .sidebar h3 {
-        color: #f8f8f2;
+        color: #ff79c6;
         margin-top: 0;
+        margin-bottom: 1.5rem;
+        border-bottom: 2px solid #6272a4;
+        padding-bottom: 0.5rem;
       }
+
+      .sidebar-section {
+        margin-bottom: 2rem;
+      }
+
       .sidebar ul {
         list-style: none;
         padding: 0;
         margin: 0;
       }
+
       .sidebar ul li {
         margin: 0.8rem 0;
       }
+
       .sidebar ul li a {
         color: #f8f8f2;
         text-decoration: none;
         transition: color 0.2s;
+        display: block;
+        padding: 0.5rem;
+        border-radius: 4px;
       }
+
       .sidebar ul li a:hover {
         color: #ff79c6;
+        background: #282a36;
       }
+
       .main-content {
-        flex: 1;
-        min-width: 0;
+        background: #44475a;
+        padding: 2rem;
+        border-radius: 8px;
       }
+
       .footer {
         width: 100%;
-        background: #282a36;
-        padding: 1rem 0;
-        margin-top: auto;
+        background: #44475a;
+        padding: 1.5rem 0;
+        margin-top: 2rem;
       }
+
       .footer-content {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
         padding: 0 2rem;
         display: flex;
         justify-content: space-between;
-        color: #f8f8f2;
       }
+
       .footer-content a {
         color: #ff79c6;
         text-decoration: none;
       }
+
       .footer-content a:hover {
         text-decoration: underline;
       }
+
       .button {
         display: inline-block;
-        padding: 0.5rem 1rem;
+        padding: 0.8rem 1.5rem;
         background: #ff79c6;
         color: #282a36;
         text-decoration: none;
         border-radius: 4px;
         margin: 1rem 0;
+        font-weight: bold;
+        transition: background 0.2s;
       }
+
       .button:hover {
         background: #ff92d0;
       }
@@ -120,15 +150,24 @@
 
     <div class="main-container">
       <div class="sidebar">
-        <h3>Table of Contents</h3>
-        {% assign pages = site.pages | sort: "title" %}
-        <ul>
-          {% for p in pages %}
-            {% if p.title %}
-              <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-            {% endif %}
-          {% endfor %}
-        </ul>
+        <div class="sidebar-section">
+          <h3>Table of Contents</h3>
+          {% assign pages = site.pages | sort: "title" %}
+          <ul>
+            {% for p in pages %}
+              {% if p.title %}
+                <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <h3>Useful Links</h3>
+          <ul>
+            <li><a href="https://mickaelasseline.com" target="_blank">Mickael Asseline</a></li>
+          </ul>
+        </div>
       </div>
 
       <main class="main-content">
