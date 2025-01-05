@@ -59,22 +59,56 @@ Welcome to my Nutanix lab documentation. This project showcases the implementati
 </div>
 
 ## Somes pictures of this project
-<div class="carousel" style="max-width: 800px; margin: 0 auto;">
-    <div style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 20px 0;">
-        <div style="flex: 0 0 100%; scroll-snap-align: start;">
+<div class="carousel" style="max-width: 800px; margin: 0 auto; position: relative;">
+    <div class="carousel-container" style="display: flex; overflow: hidden; position: relative;">
+        <div class="carousel-slide" style="flex: 0 0 100%; min-width: 100%;">
             <img src="assets/images/clustback.jpg" alt="Cluster Back View" style="width: 100%; height: auto; border-radius: 8px;">
             <p style="text-align: center; margin-top: 10px;">Cluster Back View</p>
         </div>
-        <div style="flex: 0 0 100%; scroll-snap-align: start;">
+        <div class="carousel-slide" style="flex: 0 0 100%; min-width: 100%;">
             <img src="assets/images/pc.jpg" alt="Servers" style="width: 100%; height: auto; border-radius: 8px;">
             <p style="text-align: center; margin-top: 10px;">Servers</p>
         </div>
-        <div style="flex: 0 0 100%; scroll-snap-align: start;">
+        <div class="carousel-slide" style="flex: 0 0 100%; min-width: 100%;">
             <img src="assets/images/print.gif" alt="Prism Dashboard" style="width: 100%; height: auto; border-radius: 8px;">
             <p style="text-align: center; margin-top: 10px;">3D Print</p>
         </div>
     </div>
-    <div style="text-align: center; margin-top: 10px;">
-        <p style="font-style: italic; color: #666;">Scroll horizontally to view more images</p>
-    </div>
+
+    <button class="carousel-btn prev" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer; border-radius: 50%;">❮</button>
+    <button class="carousel-btn next" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.5); color: white; border: none; padding: 10px; cursor: pointer; border-radius: 50%;">❯</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.carousel-container');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+
+            let currentSlide = 0;
+            const slideCount = slides.length;
+
+            function showSlide(index) {
+                container.style.transform = `translateX(-${index * 100}%)`;
+                container.style.transition = 'transform 0.5s ease-in-out';
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                showSlide(currentSlide);
+            }
+
+            // Auto advance every 3 seconds
+            setInterval(nextSlide, 3000);
+
+            // Button controls
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+        });
+    </script>
 </div>
