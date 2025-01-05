@@ -81,8 +81,7 @@
 
       .main-container {
         flex: 1;
-        max-width: 1200px;
-        margin: 0 auto;
+        width: 80%;
         padding: 0 2rem;
         display: grid;
         grid-template-columns: 30% 70%;
@@ -200,6 +199,93 @@
       .view-counter img {
         margin: 0;
         padding: 0;
+      }
+
+      @media screen and (max-width: 768px) {
+        body {
+          padding: 0;
+        }
+
+        .header {
+          padding: 1rem 0;
+          margin-bottom: 1rem;
+        }
+
+        .header-content {
+          padding: 0 1rem;
+        }
+
+        .header-center h1 {
+          font-size: 1.5rem;
+          margin-bottom: 0.3rem;
+        }
+
+        .header-center p {
+          font-size: 0.9rem;
+        }
+
+        .main-container {
+          width: 95%;
+          padding: 0 1rem;
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .sidebar {
+          padding: 1rem;
+        }
+
+        .main-content {
+          padding: 1rem;
+        }
+
+        .footer {
+          padding: 1rem 0;
+          margin-top: 1rem;
+        }
+
+        .footer-content {
+          padding: 0 1rem;
+          flex-direction: column;
+          gap: 0.5rem;
+          text-align: center;
+        }
+
+        .credits.left, .credits.right {
+          font-size: 0.9rem;
+        }
+
+        .view-counter {
+          margin: 0.5rem 0;
+        }
+
+        .listings-category {
+          grid-template-columns: 1fr;
+        }
+
+        .button {
+          padding: 0.6rem 1.2rem;
+          font-size: 0.9rem;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .header-center h1 {
+          font-size: 1.2rem;
+        }
+
+        .header-center p {
+          font-size: 0.8rem;
+        }
+
+        .sidebar h3 {
+          font-size: 1.1rem;
+        }
+
+        .sidebar ul li a {
+          font-size: 0.9rem;
+          padding: 0.4rem;
+        }
       }
     </style>
   </head>
