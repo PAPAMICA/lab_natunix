@@ -3,28 +3,31 @@
 @import "{{ site.theme }}";
 
 // Styles personnalisés
-body {
-  max-width: 1200px !important;
+$max-width-default: 1200px;
+$max-width-large: 1400px;
+
+%centered-container {
+  max-width: $max-width-default !important;
   margin: 0 auto !important;
+}
+
+body {
+  @extend %centered-container;
   padding: 0 20px !important;
 }
 
 .container {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
+  @extend %centered-container;
   width: 100% !important;
 }
 
 .content {
-  max-width: 1200px !important;
-  margin: 0 auto !important;
+  @extend %centered-container;
 }
 
 // Pour les grands écrans
-@media screen and (min-width: 1400px) {
-  body,
-  .container,
-  .content {
-    max-width: 1400px !important;
+@media screen and (min-width: $max-width-large) {
+  %centered-container {
+    max-width: $max-width-large !important;
   }
 }
