@@ -1,25 +1,29 @@
 ---
+---
 
+// Styles personnalisés
 body {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 20px !important;
 }
 
-article {
-  max-width: 1200px;
-  margin: 0 auto;
+.container {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
 }
 
-nav {
-  max-width: 1200px;
-  margin: 0 auto;
+.content {
+  max-width: 1200px !important;
+  margin: 0 auto !important;
 }
 
+// Pour les grands écrans
 @media screen and (min-width: 1400px) {
   body,
-  article,
-  nav {
-    max-width: 1400px;
+  .container,
+  .content {
+    max-width: 1400px !important;
   }
 }
