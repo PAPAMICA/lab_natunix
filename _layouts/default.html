@@ -27,6 +27,19 @@
         color: #f8f8f2;
         align-items: center;
         justify-content: center;
+        font-size: 16px;
+      }
+
+      @media screen and (max-width: 768px) {
+        body {
+          font-size: 14px;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        body {
+          font-size: 12px;
+        }
       }
 
       .header {
@@ -50,11 +63,13 @@
 
       .header-center h1 {
         margin-bottom: 0.5rem;
+        font-size: 2.5em;
       }
 
       .header-center p {
         margin: 0;
         opacity: 0.8;
+        font-size: 1.2em;
       }
 
       .header-left {
@@ -72,6 +87,7 @@
         padding: 0.5rem 1rem;
         border-radius: 4px;
         transition: all 0.2s;
+        font-size: 1em;
       }
 
       .nav-link:hover {
@@ -101,6 +117,7 @@
         margin-bottom: 1.5rem;
         border-bottom: 2px solid #6272a4;
         padding-bottom: 0.5rem;
+        font-size: 1.5em;
       }
 
       .sidebar-section {
@@ -124,6 +141,7 @@
         display: block;
         padding: 0.5rem;
         border-radius: 4px;
+        font-size: 1em;
       }
 
       .sidebar ul li a:hover {
@@ -136,6 +154,24 @@
         padding: 2rem;
         border-radius: 8px;
         animation: fadeIn 0.5s ease-in;
+        font-size: 1em;
+      }
+
+      .main-content h1 {
+        font-size: 2em;
+      }
+
+      .main-content h2 {
+        font-size: 1.8em;
+      }
+
+      .main-content h3 {
+        font-size: 1.5em;
+      }
+
+      .main-content p {
+        font-size: 1em;
+        line-height: 1.6;
       }
 
       @keyframes fadeIn {
@@ -169,6 +205,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        font-size: 1em;
       }
 
       .footer-content a {
@@ -190,6 +227,7 @@
         margin: 1rem 0;
         font-weight: bold;
         transition: background 0.2s;
+        font-size: 1em;
       }
 
       .button:hover {
@@ -234,12 +272,12 @@
         }
 
         .header-center h1 {
-          font-size: 1.5rem;
+          font-size: 2em;
           margin-bottom: 0.3rem;
         }
 
         .header-center p {
-          font-size: 0.9rem;
+          font-size: 1em;
         }
 
         .main-container {
@@ -257,6 +295,22 @@
           padding: 1rem;
         }
 
+        .main-content h1 {
+          font-size: 1.8em;
+        }
+
+        .main-content h2 {
+          font-size: 1.5em;
+        }
+
+        .main-content h3 {
+          font-size: 1.3em;
+        }
+
+        .main-content p {
+          font-size: 1em;
+        }
+
         .footer {
           padding: 1rem 0;
           margin-top: 1rem;
@@ -267,10 +321,11 @@
           flex-direction: column;
           gap: 0.5rem;
           text-align: center;
+          font-size: 0.9em;
         }
 
         .credits.left, .credits.right {
-          font-size: 0.9rem;
+          font-size: 0.9em;
         }
 
         .view-counter {
@@ -283,7 +338,7 @@
 
         .button {
           padding: 0.6rem 1.2rem;
-          font-size: 0.9rem;
+          font-size: 0.9em;
         }
 
         .sidebar {
@@ -305,20 +360,36 @@
 
       @media screen and (max-width: 480px) {
         .header-center h1 {
-          font-size: 1.2rem;
+          font-size: 1.6em;
         }
 
         .header-center p {
-          font-size: 0.8rem;
+          font-size: 0.9em;
         }
 
         .sidebar h3 {
-          font-size: 1.1rem;
+          font-size: 1.3em;
         }
 
         .sidebar ul li a {
-          font-size: 0.9rem;
+          font-size: 0.9em;
           padding: 0.4rem;
+        }
+
+        .main-content h1 {
+          font-size: 1.6em;
+        }
+
+        .main-content h2 {
+          font-size: 1.4em;
+        }
+
+        .main-content h3 {
+          font-size: 1.2em;
+        }
+
+        .main-content p {
+          font-size: 0.9em;
         }
       }
 
