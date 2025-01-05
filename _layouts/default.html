@@ -15,74 +15,117 @@
     <link rel="stylesheet" href="{{ '/assets/css/ie.css' | relative_url }}">
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <style>
+      .sidebar {
+        width: 250px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100%;
+        background: #282a36;
+        padding: 20px;
+        overflow-y: auto;
+      }
+      .main-content {
+        margin-left: 250px;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+      }
+      .sidebar ul li {
+        margin: 10px 0;
+      }
+      .sidebar ul li a {
+        color: #f8f8f2;
+        text-decoration: none;
+      }
+      .sidebar ul li a:hover {
+        color: #ff79c6;
+      }
+    </style>
   </head>
 
   <body class="{{ page.colorspace }}">
-    {% if site.show_header %}
-      <div id="header">
-        <nav>
-          {% if site.github.repository_url %}
-            <li class="fork"><a href="{{ site.github.repository_url }}">View On GitHub</a></li>
+    <div class="sidebar">
+      <h3>Table of Contents</h3>
+      {% assign pages = site.pages | sort: "title" %}
+      <ul>
+        {% for p in pages %}
+          {% if p.title %}
+            <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
           {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
 
-          {% if site.show_downloads %}
-            {% if site.github.zip_url %}
-              <li class="downloads"><a href="{{ site.github.zip_url }}">ZIP</a></li>
+    <div class="main-content">
+      {% if site.show_header %}
+        <div id="header">
+          <nav>
+            {% if site.github.repository_url %}
+              <li class="fork"><a href="{{ site.github.repository_url }}">View On GitHub</a></li>
             {% endif %}
 
-            {% if site.github.tar_url %}
-              <li class="downloads"><a href="{{ site.github.tar_url }}">TAR</a></li>
+            {% if site.show_downloads %}
+              {% if site.github.zip_url %}
+                <li class="downloads"><a href="{{ site.github.zip_url }}">ZIP</a></li>
+              {% endif %}
+
+              {% if site.github.tar_url %}
+                <li class="downloads"><a href="{{ site.github.tar_url }}">TAR</a></li>
+              {% endif %}
+
+              <li class="title">DOWNLOADS</li>
             {% endif %}
+          </nav>
+        </div><!-- end header -->
+      {% endif %}
 
-            <li class="title">DOWNLOADS</li>
-          {% endif %}
-        </nav>
-      </div><!-- end header -->
-    {% endif %}
+      <div class="wrapper">
+        {% if site.show_header %}<section>
+        {% else %}<section class="no-header">{% endif %}
+          <div id="title">
+            {% if page.icon %}
+            <img src="{{ page.icon | relative_url }}" />
+            {% endif %}
+            <h1>{{ site.title | default: site.github.repository_name }}</h1>
+            <p>{{ site.description | default: site.github.project_tagline }}</p>
+            <hr>
+          </div>
 
-    <div class="wrapper">
-      {% if site.show_header %}<section>
-      {% else %}<section class="no-header">{% endif %}
-        <div id="title">
-          {% if page.icon %}
-          <img src="{{ page.icon | relative_url }}" />
-          {% endif %}
-          <h1>{{ site.title | default: site.github.repository_name }}</h1>
-          <p>{{ site.description | default: site.github.project_tagline }}</p>
-          <hr>
-        </div>
+          {{ content }}
 
-        {{ content }}
+          <div class="listings">
+            {% for category in page.listings %}
+              <div class="listings-category">
+                <h2 class="title">{{ category[0] }}</h2>
+                {% for listing in category[1] %}
+                  <div class="listing">
+                    {% if listing[1].link contains 'http' %}
+                      <a href="{{ listing[1].link }}">
+                    {% else %}
+                      <a href="{{ listing[1].link | baseurl }}">
+                    {% endif %}
+                      <img src="{{ listing[1].icon | relative_url }}" />
+                      <h3>{{ listing[0] }}</h3>
+                    </a>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endfor %}
+          </div>
 
-        <div class="listings">
-          {% for category in page.listings %}
-            <div class="listings-category">
-              <h2 class="title">{{ category[0] }}</h2>
-              {% for listing in category[1] %}
-                <div class="listing">
-                  {% if listing[1].link contains 'http' %}
-                    <a href="{{ listing[1].link }}">
-                  {% else %}
-                    <a href="{{ listing[1].link | baseurl }}">
-                  {% endif %}
-                    <img src="{{ listing[1].icon | relative_url }}" />
-                    <h3>{{ listing[0] }}</h3>
-                  </a>
-                </div>
-              {% endfor %}
-            </div>
-          {% endfor %}
-        </div>
+          <a href="../" class="button">Back</a>
 
-        <a href="../" class="button">Back</a>
+          <div id="footer">
+            <hr />
+            <span class="credits left">Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
+            <span class="credits right">Theme by <a href="https://draculatheme.com/">Dracula</a></span>
+          </div>
+        </section>
 
-        <div id="footer">
-          <hr />
-          <span class="credits left">Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://draculatheme.com/">Dracula</a></span>
-        </div>
-      </section>
-
+      </div>
     </div>
 
     {% if site.google_analytics %}
