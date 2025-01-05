@@ -1,3 +1,8 @@
+---
+title: Infrastructure setup
+order: 1
+---
+
 # Infrastructure Setup
 
 ## Hardware Specifications

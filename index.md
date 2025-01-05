@@ -1,3 +1,8 @@
+---
+title: Homepage
+order: 0
+---
+
 # Nutanix Lab Documentation
 
 ## Overview
