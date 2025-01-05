@@ -292,7 +292,7 @@
         display: none;
         position: fixed;
         top: 1rem;
-        left: 1rem;
+        right: 1rem;
         z-index: 1000;
         background: none;
         border: none;
@@ -320,18 +320,18 @@
 
         .sidebar {
           position: fixed;
-          left: -100%;
+          right: -100%;
           top: 0;
           height: 100vh;
           width: 80%;
           max-width: 300px;
-          transition: left 0.3s ease;
+          transition: right 0.3s ease;
           z-index: 999;
           overflow-y: auto;
         }
 
         .sidebar.active {
-          left: 0;
+          right: 0;
         }
 
         .overlay {
@@ -436,7 +436,7 @@
       <div class="footer-content">
         <span class="credits left">Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
         <div class="view-counter">
-          <img src="https://visitor-badge.laobi.icu/badge?page_id={{ site.github.repository_name }}&left_color=#282a36&right_color=#ff79c6" alt="Visitor Count" />
+          <img src="https://visitor-badge.laobi.icu/badge?page_id={{ site.github.repository_name }}&left_color=%23282A36&right_color=%23ff7ac7&left_text=Little%20curious" alt="Visitor Count" />
         </div>
         <span class="credits right">Theme by <a href="https://draculatheme.com/">Dracula</a></span>
       </div>
@@ -528,12 +528,14 @@
         hamburger.addEventListener('click', toggleMenu);
         overlay.addEventListener('click', toggleMenu);
 
-        // Fermer le menu si on clique sur un lien
+        // Modifier la gestion des clics sur les liens
         const sidebarLinks = document.querySelectorAll('.sidebar a');
         sidebarLinks.forEach(link => {
-          link.addEventListener('click', () => {
+          link.addEventListener('click', (e) => {
+            // Ne pas empêcher la navigation par défaut
+            // Attendre un court instant avant de fermer le menu pour permettre la navigation
             if (sidebar.classList.contains('active')) {
-              toggleMenu();
+              setTimeout(toggleMenu, 100);
             }
           });
         });
