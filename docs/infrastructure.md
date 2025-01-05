@@ -6,7 +6,7 @@ order: 1
 # Infrastructure Setup
 
 ## Hardware Specifications
-- Nodes: 
+- Nodes:
 - CPU:
 - RAM:
 - Storage:
@@ -19,4 +19,4 @@ order: 1
 ## Network Architecture
 - Management Network:
 - VM Network:
-- Storage Network: 
+- Storage Network:
