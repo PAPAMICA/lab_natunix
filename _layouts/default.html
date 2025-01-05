@@ -16,117 +16,158 @@
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <style>
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .header {
+        width: 100%;
+        background: #282a36;
+        padding: 1rem 0;
+        color: #f8f8f2;
+      }
+      .header-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .main-container {
+        flex: 1;
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        gap: 2rem;
+      }
       .sidebar {
         width: 250px;
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 100%;
+        flex-shrink: 0;
         background: #282a36;
-        padding: 20px;
-        overflow-y: auto;
+        padding: 1.5rem;
+        border-radius: 8px;
+        height: fit-content;
       }
-      .main-content {
-        margin-left: 250px;
+      .sidebar h3 {
+        color: #f8f8f2;
+        margin-top: 0;
       }
       .sidebar ul {
         list-style: none;
         padding: 0;
+        margin: 0;
       }
       .sidebar ul li {
-        margin: 10px 0;
+        margin: 0.8rem 0;
       }
       .sidebar ul li a {
         color: #f8f8f2;
         text-decoration: none;
+        transition: color 0.2s;
       }
       .sidebar ul li a:hover {
         color: #ff79c6;
+      }
+      .main-content {
+        flex: 1;
+        min-width: 0;
+      }
+      .footer {
+        width: 100%;
+        background: #282a36;
+        padding: 1rem 0;
+        margin-top: auto;
+      }
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        color: #f8f8f2;
+      }
+      .footer-content a {
+        color: #ff79c6;
+        text-decoration: none;
+      }
+      .footer-content a:hover {
+        text-decoration: underline;
+      }
+      .button {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: #ff79c6;
+        color: #282a36;
+        text-decoration: none;
+        border-radius: 4px;
+        margin: 1rem 0;
+      }
+      .button:hover {
+        background: #ff92d0;
       }
     </style>
   </head>
 
   <body class="{{ page.colorspace }}">
-    <div class="sidebar">
-      <h3>Table of Contents</h3>
-      {% assign pages = site.pages | sort: "title" %}
-      <ul>
-        {% for p in pages %}
-          {% if p.title %}
-            <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-
-    <div class="main-content">
-      {% if site.show_header %}
-        <div id="header">
-          <nav>
-            {% if site.github.repository_url %}
-              <li class="fork"><a href="{{ site.github.repository_url }}">View On GitHub</a></li>
-            {% endif %}
-
-            {% if site.show_downloads %}
-              {% if site.github.zip_url %}
-                <li class="downloads"><a href="{{ site.github.zip_url }}">ZIP</a></li>
-              {% endif %}
-
-              {% if site.github.tar_url %}
-                <li class="downloads"><a href="{{ site.github.tar_url }}">TAR</a></li>
-              {% endif %}
-
-              <li class="title">DOWNLOADS</li>
-            {% endif %}
-          </nav>
-        </div><!-- end header -->
-      {% endif %}
-
-      <div class="wrapper">
-        {% if site.show_header %}<section>
-        {% else %}<section class="no-header">{% endif %}
-          <div id="title">
-            {% if page.icon %}
-            <img src="{{ page.icon | relative_url }}" />
-            {% endif %}
-            <h1>{{ site.title | default: site.github.repository_name }}</h1>
-            <p>{{ site.description | default: site.github.project_tagline }}</p>
-            <hr>
-          </div>
-
-          {{ content }}
-
-          <div class="listings">
-            {% for category in page.listings %}
-              <div class="listings-category">
-                <h2 class="title">{{ category[0] }}</h2>
-                {% for listing in category[1] %}
-                  <div class="listing">
-                    {% if listing[1].link contains 'http' %}
-                      <a href="{{ listing[1].link }}">
-                    {% else %}
-                      <a href="{{ listing[1].link | baseurl }}">
-                    {% endif %}
-                      <img src="{{ listing[1].icon | relative_url }}" />
-                      <h3>{{ listing[0] }}</h3>
-                    </a>
-                  </div>
-                {% endfor %}
-              </div>
-            {% endfor %}
-          </div>
-
-          <a href="../" class="button">Back</a>
-
-          <div id="footer">
-            <hr />
-            <span class="credits left">Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
-            <span class="credits right">Theme by <a href="https://draculatheme.com/">Dracula</a></span>
-          </div>
-        </section>
-
+    <header class="header">
+      <div class="header-content">
+        <h1>{{ site.title | default: site.github.repository_name }}</h1>
+        <p>{{ site.description | default: site.github.project_tagline }}</p>
       </div>
+    </header>
+
+    <div class="main-container">
+      <div class="sidebar">
+        <h3>Table of Contents</h3>
+        {% assign pages = site.pages | sort: "title" %}
+        <ul>
+          {% for p in pages %}
+            {% if p.title %}
+              <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <main class="main-content">
+        {% if page.icon %}
+          <img src="{{ page.icon | relative_url }}" alt="Page icon" />
+        {% endif %}
+
+        {{ content }}
+
+        <div class="listings">
+          {% for category in page.listings %}
+            <div class="listings-category">
+              <h2 class="title">{{ category[0] }}</h2>
+              {% for listing in category[1] %}
+                <div class="listing">
+                  {% if listing[1].link contains 'http' %}
+                    <a href="{{ listing[1].link }}">
+                  {% else %}
+                    <a href="{{ listing[1].link | baseurl }}">
+                  {% endif %}
+                    <img src="{{ listing[1].icon | relative_url }}" />
+                    <h3>{{ listing[0] }}</h3>
+                  </a>
+                </div>
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+
+        <a href="../" class="button">Back</a>
+      </main>
     </div>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <span class="credits left">Project maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a></span>
+        <span class="credits right">Theme by <a href="https://draculatheme.com/">Dracula</a></span>
+      </div>
+    </footer>
 
     {% if site.google_analytics %}
       <script type="text/javascript">
