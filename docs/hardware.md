@@ -20,6 +20,8 @@ For this lab, I opted for a three-node Nutanix cluster to explore advanced featu
 ## Hardware Selection
 After thorough research, I chose the [ACEMAGICIAN AM06PRO Mini PC](https://amzn.to/3W6YD5n) for each node.
 
+<img src="../assets/images/pc.png" alt="ACEMAGICIAN AM06PRO Mini PC" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+
 ### Key Features
 - **Processor**: AMD Ryzen 7 5700U (8 cores, 16 threads, up to 4.4 GHz)
 - **Memory**: 32 GB DDR4 RAM
@@ -46,6 +48,13 @@ After thorough research, I chose the [ACEMAGICIAN AM06PRO Mini PC](https://amzn.
 - **NVMe SSD**: [Samsung SSD 990 Pro](https://amzn.to/4iWHQMp)
 - **SATA SSD**: [Samsung SSD 870 EVO](https://amzn.to/4a1GlbL)
 - **USB Drive**: [SanDisk Ultra Fit 64 Go ](https://amzn.to/420XiRm)
+
+## Router
+In order to make this cluster independent and have control over the entire infrastructure, I add a front router.
+
+- **Router**: [HUNSN Micro Firewall Appliance](https://amzn.to/4a46u9I)
+
+<img src="../assets/images/router.png" alt="Router" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
 ## Custom Enclosure: Design and 3D Printing
 
