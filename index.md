@@ -54,6 +54,10 @@ Welcome to my Nutanix lab documentation. This project showcases the implementati
         <p>Git</p>
     </div>
     <div>
+        <img src="assets/logos/bash.png" alt="Bash" style="width: 64px; height: 64px;">
+        <p>Bash</p>
+    </div>
+    <div>
         <img src="assets/logos/linux.png" alt="Linux" style="width: 64px; height: 64px;">
         <p>Linux</p>
     </div>
