@@ -4,7 +4,7 @@ order: 0
 ---
 
 # Nutanix Lab Documentation
-<img src="assets/images/banner.png" alt="Nutanix Lab" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+<img src="assets/logos/nutanix_banner.png" alt="Nutanix Lab" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
 ## Overview
 Welcome to my Nutanix lab documentation. This project showcases the implementation of a three-node Nutanix cluster, designed for learning and certification preparation. Built with ACEMAGICIAN AM06PRO Mini PCs, this setup demonstrates how to create a cost-effective, energy-efficient hyperconverged infrastructure environment.
@@ -32,6 +32,14 @@ Welcome to my Nutanix lab documentation. This project showcases the implementati
     <div>
         <img src="assets/logos/proxmox.png" alt="Proxmox" style="width: 64px; height: 64px;">
         <p>Proxmox</p>
+    </div>
+    <div>
+        <img src="assets/logos/opnsense.png" alt="OPNsense" style="width: 64px; height: 64px;">
+        <p>OPNsense</p>
+    </div>
+    <div>
+        <img src="assets/logos/wireguard.png" alt="Wireguard" style="width: 64px; height: 64px;">
+        <p>Wireguard</p>
     </div>
     <div>
         <img src="assets/logos/grafana.png" alt="Grafana" style="width: 64px; height: 64px;">

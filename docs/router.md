@@ -22,7 +22,7 @@ After some research, I found the [HUNSN Micro Firewall Appliance](https://amzn.t
 
 ### Proxmox
 
-<img src="../assets/images/proxmox_banner.png" alt="Proxmox" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 8px;">
+<img src="../assets/logos/proxmox_banner.png" alt="Proxmox" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 8px;">
 
 I chose to install Proxmox to virtualize OPNSense, making it easy to backup and upgrade. This will also allow me to set up an instance with a complete monitoring solution to monitor all equipment and systems.
 
@@ -30,7 +30,7 @@ I chose to install Proxmox to virtualize OPNSense, making it easy to backup and 
 
 ### OPNsense
 
-!!photo opensense banner
+<img src="../assets/logos/opnsense_banner.png" alt="OPNsense" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 8px;">
 
 For the installation of OPNSense, it is necessary to prepare the parameters of the instance with :
 - ISO image
@@ -51,7 +51,7 @@ The configuration of the routes and the firewall :
 
 ### VPN
 
-!!photo wireguard banner + logo wireguard dans techno
+<img src="../assets/logos/wireguard_banner.png" alt="Wireguard" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 8px;">
 
 In order to access the infrastructure from outside, it is necessary to configure a VPN. I set up a Wireguard VPN :
 
