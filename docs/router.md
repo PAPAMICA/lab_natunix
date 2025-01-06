@@ -26,7 +26,8 @@ After some research, I found the [HUNSN Micro Firewall Appliance](https://amzn.t
 
 I chose to install Proxmox to virtualize OPNSense, making it easy to backup and upgrade. This will also allow me to set up an instance with a complete monitoring solution to monitor all equipment and systems.
 
-<img src="../assets/images/proxmox_opensense_config.png" alt="Proxmox" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+<img src="../assets/images/proxmox_dashboard.png" alt="Proxmox" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+
 
 ### OPNsense
 
@@ -36,6 +37,8 @@ For the installation of OPNSense, it is necessary to prepare the parameters of t
 - ISO image
 - 2 network cards
 - 100 GB of storage
+
+<img src="../assets/images/proxmox_opnsense_config.png" alt="OPNsense" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
 Once the instance created and OPNsense installed, it is necessary to configure the LAN and WAN interfaces :
 
