@@ -53,7 +53,7 @@ A little photo of the pretty dashboard :
 
 In order to access the infrastructure from outside, it is necessary to configure a VPN. I set up a Wireguard VPN :
 
-!!photo OPNsense VPN
+<img src="../assets/images/wireguard_dashboard.png" alt="Wireguard" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
 ### Retrieving IP and VPN Information at Startup
 
