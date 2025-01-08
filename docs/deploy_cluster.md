@@ -151,5 +151,22 @@ If it still doesn't work, you can directly consult the [dedicated thread for thi
 
 This installationprocess will take 15-20 minutes to complete.
 
-Once the cluster is created, you will be able to access it from the web interface.
+Once the cluster is created, you will be able to access it from the web interface `https://192.168.100.11:9440` :
 
+<img src="../assets/images/nutanix_login.png" alt="Nutanix Login" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+
+```bash
+username = "admin"
+password = "nutanix/4u"
+```
+
+And change the password of the admin user.
+
+It is then necessary to connect with your NEXT (Nutanix account) account :
+
+<img src="../assets/images/nutanix_next.png" alt="Nutanix NEXT" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+
+
+Tadaaa 🎉 ! Your cluster is ready to use !
+
+<img src="../assets/images/nutanix_dashboard_1.png" alt="Nutanix Dashboard" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
