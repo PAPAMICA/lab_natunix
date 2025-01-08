@@ -132,6 +132,25 @@
         background: #282a36;
       }
 
+      .sidebar ul li a.active {
+        color: #ff79c6;
+        background: #282a36;
+        font-weight: bold;
+      }
+
+      .sidebar ul li.sub-heading {
+        padding-left: 1.5rem;
+        font-size: 0.9em;
+      }
+
+      .sidebar ul li.sub-heading a {
+        color: #bd93f9;
+      }
+
+      .sidebar ul li.sub-heading a:hover {
+        color: #ff79c6;
+      }
+
       .main-content {
         background: #44475a;
         padding: 2rem;
@@ -464,7 +483,28 @@
           <ul>
             {% for p in pages %}
               {% if p.title and p.order %}
-                <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
+                <li>
+                  <a href="{{ p.url | relative_url }}" {% if page.url == p.url %}class="active"{% endif %}>
+                    {{ p.title }}
+                  </a>
+                  {% if page.url == p.url %}
+                    {% capture page_content %}{{ content }}{% endcapture %}
+                    {% assign lines = page_content | split: '<h1' %}
+                    {% for line in lines %}
+                      {% if forloop.first == false %}
+                        {% assign title = line | split: '</h1>' | first | split: '>' | last %}
+                        <li class="sub-heading"><a href="#{{ title | slugify }}">{{ title }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                    {% assign lines = page_content | split: '<h2' %}
+                    {% for line in lines %}
+                      {% if forloop.first == false %}
+                        {% assign title = line | split: '</h2>' | first | split: '>' | last %}
+                        <li class="sub-heading"><a href="#{{ title | slugify }}">{{ title }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                </li>
               {% endif %}
             {% endfor %}
           </ul>
