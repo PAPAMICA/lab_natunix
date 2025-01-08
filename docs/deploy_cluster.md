@@ -56,11 +56,11 @@ If you downloaded the correct Nutanix ISO, AHV should be pre-selected: leave it 
 ### Disks
 
 For the disks, you need to select the 3 disks you prepared earlier and assign them the letter corresponding to the system that will use them:
- - [C] for the CVM (The NVMe SSD in this case)
- - [D] for storage (The SATA SSD in this case)
- - [H] for the hypervisor (The external USB drive in this case)
+ - **[C]** for the CVM (The NVMe SSD in this case)
+ - **[D]** for storage (The SATA SSD in this case)
+ - **[H]** for the hypervisor (The external USB drive in this case)
 
- And [I] corresponds to your installation device (The USB drive in this case)
+ And **[I]** corresponds to your installation device (The USB drive in this case)
 
 ### Network
 
