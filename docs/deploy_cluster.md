@@ -96,6 +96,17 @@ Now that the OS is installed, we will configure the system:
 
 ## Connexion
 
+### Nutanix AHV
+Identifiant : `root`
+
+Mot de passe par défaut : `nutanix/4u`
+
+### Nutanix CVM 
+
+```bash
+ssh nutanix@192.168.100.11
+```
+
 Identifiant : `nutanix`
 
 Mot de passe par défaut : `nutanix/4u`
@@ -130,7 +141,15 @@ Puis vous pourrez lancer la création du cluster avec la commande suivante depui
 cluster -s 192.168.100.11,192.168.101.21,192.168.102.31 create
 ```
 
-This process will take 15-20 minutes to complete.
+If you encounter this error:
+```
+2025-01-01 08:07:50 CRITICAL cluster:600 Could not discover all nodes specified. Please make sure that the SVMs from which you wish to create the cluster are not already part of another cluster. Undiscovered ips : x.x.x.6,x.x.x.7,x.x.x.8,x.x.x.9
+```
+
+Restart the nodes specified in the error and try the command again.
+If it still doesn't work, you can directly consult the [dedicated thread for this error](https://portal.nutanix.com/page/documents/kbs/details?targetId=kA032000000TTkvCAG).
+
+This installationprocess will take 15-20 minutes to complete.
 
 Once the cluster is created, you will be able to access it from the web interface.
 
