@@ -129,7 +129,7 @@ timedatectl set-timezone Europe/Paris
 hostnamectl set-hostname node-1
 ```
 
-# Nutanix cluster
+# Create the cluster
 
 Pour créer un cluster, assurez-vous d'avoir l'ensemble de vos nodes installés et configurés.
 
