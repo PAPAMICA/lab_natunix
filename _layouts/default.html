@@ -94,6 +94,10 @@
         padding: 2rem;
         border-radius: 8px;
         height: fit-content;
+        position: sticky;
+        top: 2rem;
+        max-height: calc(100vh - 4rem);
+        overflow-y: auto;
       }
 
       .sidebar h3 {
@@ -456,6 +460,34 @@
           transform: rotate(-45deg) translate(7px, -7px);
         }
       }
+
+      .sidebar ul li.h2-heading {
+        padding-left: 2.5rem;
+        font-size: 0.85em;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Style de la scrollbar pour la sidebar */
+      .sidebar::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .sidebar::-webkit-scrollbar-track {
+        background: #282a36;
+        border-radius: 4px;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb {
+        background: #6272a4;
+        border-radius: 4px;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb:hover {
+        background: #ff79c6;
+      }
     </style>
   </head>
 
@@ -489,18 +521,19 @@
                   </a>
                   {% if page.url == p.url %}
                     {% capture page_content %}{{ content }}{% endcapture %}
-                    {% assign lines = page_content | split: '<h1' %}
-                    {% for line in lines %}
+                    {% assign h1_sections = page_content | split: '<h1' %}
+                    {% for h1_section in h1_sections %}
                       {% if forloop.first == false %}
-                        {% assign title = line | split: '</h1>' | first | split: '>' | last %}
-                        <li class="sub-heading"><a href="#{{ title | slugify }}">{{ title }}</a></li>
-                      {% endif %}
-                    {% endfor %}
-                    {% assign lines = page_content | split: '<h2' %}
-                    {% for line in lines %}
-                      {% if forloop.first == false %}
-                        {% assign title = line | split: '</h2>' | first | split: '>' | last %}
-                        <li class="sub-heading"><a href="#{{ title | slugify }}">{{ title }}</a></li>
+                        {% assign h1_title = h1_section | split: '</h1>' | first | split: '>' | last %}
+                        <li class="sub-heading"><a href="#{{ h1_title | slugify }}">{{ h1_title }}</a></li>
+
+                        {% assign h2_sections = h1_section | split: '<h2' %}
+                        {% for h2_section in h2_sections %}
+                          {% if forloop.first == false %}
+                            {% assign h2_title = h2_section | split: '</h2>' | first | split: '>' | last %}
+                            <li class="h2-heading"><a href="#{{ h2_title | slugify }}">{{ h2_title }}</a></li>
+                          {% endif %}
+                        {% endfor %}
                       {% endif %}
                     {% endfor %}
                   {% endif %}
@@ -671,6 +704,38 @@
               }, 300);
             });
           }
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Gestion du scroll smooth pour les liens de la table des matières
+        document.querySelectorAll('.sidebar a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              const headerOffset = 20;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+
+              // Si on est sur mobile, fermer le menu
+              const sidebar = document.querySelector('.sidebar');
+              const hamburger = document.querySelector('.hamburger-menu');
+              if (sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                hamburger.classList.remove('active');
+              }
+            }
+          });
         });
       });
     </script>
