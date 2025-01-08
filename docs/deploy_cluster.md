@@ -3,8 +3,6 @@ title: 🔥  Nutanix installation
 order: 4
 ---
 
-In progress ...
-
 # One node Nutanix installation
 
 ## Installation of 3 Storage Devices
