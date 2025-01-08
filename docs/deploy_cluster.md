@@ -92,4 +92,45 @@ You can finish the installation until you have a terminal on the system.
 
 # Nutanix configuration
 
+Now that the OS is installed, we will configure the system:
+
+## Connexion
+
+Identifiant : `nutanix`
+
+Mot de passe par défaut : `nutanix/4u`
+
+## Base configuration
+
+### Keymap
+
+```bash
+localectl set-keymap fr-azerty
+```
+
+### Timezone
+
+```bash
+timedatectl set-timezone Europe/Paris
+```
+
+### Hostname
+
+```bash
+hostnamectl set-hostname node-1
+```
+
 # Nutanix cluster
+
+Pour créer un cluster, assurez-vous d'avoir l'ensemble de vos nodes installés et configurés.
+
+Puis vous pourrez lancer la création du cluster avec la commande suivante depuis le node principal :
+
+```bash
+cluster -s 192.168.100.11,192.168.101.21,192.168.102.31 create
+```
+
+This process will take 15-20 minutes to complete.
+
+Once the cluster is created, you will be able to access it from the web interface.
+
