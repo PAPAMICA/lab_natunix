@@ -3,18 +3,29 @@ title: ⚡  Router and controller
 order: 3
 ---
 
-In progress ...
-
 # Router
 
 ## Why ?
 
-I want this lab to be completely autonomous and control the entire infrastructure. In order to do this, it is essential to have a router in front of the lab.
+I want this lab to be completely autonomous and control the entire infrastructure. In order to do this, it is essential to have a router in front of the lab. Having a dedicated router provides several key benefits:
+
+- Complete control over network segmentation and security
+- Ability to implement VPN for remote access
+- Traffic monitoring and bandwidth management
+- Network isolation between lab environments
+- Customizable firewall rules and security policies
 
 ## Hardware
 For this, I selected a sufficiently powerful equipment to virtualize an OPNSense and which has several 2.5Gbps network cards.
 
-After some research, I found the [HUNSN Micro Firewall Appliance](https://amzn.to/4a46u9I) which is a small and powerful router with 2.5Gbps network cards.
+After some research, I found the [HUNSN Micro Firewall Appliance](https://amzn.to/4a46u9I) which is a small and powerful router with 2.5Gbps network cards. This appliance offers an excellent balance of performance, power efficiency, and features:
+
+- Intel Quad-Core processor
+- Multiple 2.5GbE ports
+- Low power consumption
+- Compact form factor
+- AES-NI support for VPN acceleration
+- Sufficient RAM and storage for virtualization
 
 <img src="../assets/images/router.png" alt="Router" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
@@ -24,7 +35,17 @@ After some research, I found the [HUNSN Micro Firewall Appliance](https://amzn.t
 
 <img src="../assets/logos/proxmox_banner.png" alt="Proxmox" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 8px;">
 
-I chose to install Proxmox to virtualize OPNSense, making it easy to backup and upgrade. This will also allow me to set up an instance with a complete monitoring solution to monitor all equipment and systems.
+I chose to install Proxmox as the hypervisor for several compelling reasons:
+
+- Open-source solution with enterprise features
+- Excellent web-based management interface
+- Built-in backup and snapshot capabilities
+- Live migration support
+- Strong community support
+- Native support for both containers (LXC) and full virtualization (KVM)
+- Regular security updates and stable release cycle
+
+This setup allows me to virtualize OPNSense, making it easy to backup and upgrade. Additionally, Proxmox's flexibility enables me to deploy a comprehensive monitoring solution alongside the router VM to oversee all equipment and systems.
 
 <img src="../assets/images/proxmox_dashboard.png" alt="Proxmox" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
@@ -33,6 +54,17 @@ I chose to install Proxmox to virtualize OPNSense, making it easy to backup and 
 
 <img src="../assets/logos/opnsense_banner.png" alt="OPNsense" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 8px;">
 
+OPNsense was selected as the firewall/router solution for several key advantages:
+
+- Modern, security-focused BSD-based firewall
+- Regular security updates and feature releases
+- User-friendly web interface
+- Advanced networking features including VLANs and VPNs
+- Extensive plugin ecosystem
+- Active development and community support
+- Built-in reporting and monitoring tools
+- Enterprise-grade features without licensing costs
+
 For the installation of OPNSense, it is necessary to prepare the parameters of the instance with :
 - ISO image
 - 2 network cards
@@ -40,11 +72,21 @@ For the installation of OPNSense, it is necessary to prepare the parameters of t
 
 <img src="../assets/images/proxmox_opnsense_config.png" alt="OPNsense" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
-Once the instance created and OPNsense installed, it is necessary to configure the LAN and WAN interfaces :
+Once the instance created and OPNsense installed, it is necessary to configure the LAN and WAN interfaces. The dual-interface setup provides proper network isolation and security:
+
+- WAN interface: Connects to the internet/external network with DHCP
+- LAN interface: Provides protected internal network for lab equipment
 
 <img src="../assets/images/opnsense_console.png" alt="OPNsense" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
-Then we continue with the DHCP configuration and the firewall.
+Then we continue with the DHCP configuration and the firewall. OPNsense provides granular control over:
+
+- Network segmentation
+- Traffic filtering
+- NAT rules
+- DHCP server configuration
+- DNS services
+- Quality of Service (QoS)
 
 A little photo of the pretty dashboard :
 
@@ -54,7 +96,17 @@ A little photo of the pretty dashboard :
 
 <img src="../assets/logos/wireguard_banner.png" alt="Wireguard" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 8px;">
 
-In order to access the infrastructure from outside, it is necessary to configure a VPN. I set up a Wireguard VPN :
+In order to access the infrastructure from outside, it is necessary to configure a VPN. I chose WireGuard for several compelling reasons:
+
+- Modern, high-performance VPN protocol
+- Simpler codebase compared to OpenVPN
+- Lower overhead and better battery life
+- Quick connection establishment
+- Strong encryption by default
+- Easy configuration and key management
+- Excellent mobile client support
+
+Here's the WireGuard dashboard showing the VPN status:
 
 <img src="../assets/images/wireguard_dashboard.png" alt="Wireguard" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
@@ -62,7 +114,7 @@ In order to access the infrastructure from outside, it is necessary to configure
 
 <img src="../assets/logos/bash_banner.png" alt="Bash" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto; border-radius: 8px;">
 
-This cluster needs to be autonomous and portable, so I configured the WAN address to be obtained via DHCP. However, it would be impractical to connect a screen every time it starts up just to retrieve the IP and VPN information.
+This cluster needs to be completely autonomous and portable, so I configured the WAN address to be obtained via DHCP. However, it would be impractical to connect a screen every time it starts up just to retrieve the IP and VPN information.
 
 The solution is to have the cluster automatically send us the IP and connection information at startup. This can be accomplished with a simple bash script:
 
