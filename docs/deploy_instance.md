@@ -7,17 +7,17 @@ order: 5
 
 ## Upload image
 
-To do this, go to **`Settings`** > **`Image Configuration`** > **`Upload Image`**
+To do this, go to `Settings` > `Image Configuration` > `Upload Image`
 
 You can directly enter the download link of the image or upload your file :
 
-🔥 Tips : for Ubuntu images → https://cloud-images.ubuntu.com/
+🔥 Tips : for Ubuntu images → [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)
 
 <img src="../assets/images/nutanix_upload_image.png" alt="Nutanix Upload Image" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
 ## Create instance
 
-To do this, go to **`VM`** > **`Create VM`**
+To do this, go to `VM` > `Create VM`
 
 <img src="../assets/images/nutanix_create_instance.gif" alt="Nutanix Create VM" style="max-width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">
 
